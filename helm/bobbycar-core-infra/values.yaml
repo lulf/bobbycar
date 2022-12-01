@@ -36,13 +36,73 @@ kafka:
       partitions: 1
       replicas: 1
       retention: 300000
-    metricsAggregated:
-      name: bobbycar-metrics-aggregated
-      partitions: 1
-      replicas: 1
-      retention: 60000
-    speedAlert:
-      name: bobbycar-speed-alert
-      partitions: 1
-      replicas: 1
-      retention: 300000
+
+global:
+  cluster: openshift
+  drogueCloud:
+    useServiceCA: true
+    keycloak:
+      insecure: true
+
+drogueCloudCore:
+  console:
+    localCertificates: true
+
+  endpoints:
+    coap:
+      ingress:
+        port: 443
+    mqtt:
+      ingress:
+        port: 443
+    mqttWs:
+      ingress:
+        port: 443
+    mqttWsBrowser:
+      ingress:
+        port: 443
+    http:
+      ingress:
+        port: 443
+
+  integrations:
+    websocket:
+      service:
+        insecure: true
+      ingress:
+        insecure: true
+        port: 80
+    mqtt:
+      ingress:
+        port: 443
+    mqttWsBrowser:
+      ingress:
+        port: 443
+    mqttWs:
+      ingress:
+        port: 443
+
+  services:
+    console:
+      service:
+        insecure: true
+      ingress:
+        insecure: true
+        port: 80
+    command:
+      service:
+        insecure: true
+      ingress:
+        insecure: true
+        port: 80
+    registry:
+      service:
+        insecure: true
+    api:
+      ingress:
+        insecure: true
+        port: 80
+    sso:
+      ingress:
+        insecure: true
+        port: 80
